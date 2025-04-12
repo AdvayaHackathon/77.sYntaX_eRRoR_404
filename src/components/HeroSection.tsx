@@ -5,6 +5,7 @@ import { Search, MapPin } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 
+
 const HeroSection = () => {
   const [searchQuery, setSearchQuery] = useState('');
   const [location, setLocation] = useState('');
@@ -28,18 +29,18 @@ const HeroSection = () => {
     <div className="relative">
       {/* Hero background */}
       <div 
-        className="hero-gradient w-full h-[500px] lg:h-[600px] relative overflow-hidden" 
+        className="relative w-full h-[500px] lg:h-[600px] bg-black/40" 
         style={{
-          backgroundImage: "url('https://www.cauvery.com/wp-content/uploads/2020/12/southindia.jpg')",
+          backgroundImage: "url('https://cloudfrontgharpediabucket.gharpedia.com/uploads/2024/02/0101010008-11-Hampi-Historic-Town.jpg')",
           backgroundSize: 'cover',
           backgroundPosition: 'center',
-          backgroundBlendMode: 'overlay'
+          backgroundRepeat: 'no-repeat',
         }}
       >
         {/* Content */}
         <div className="container mx-auto px-4 h-full flex flex-col justify-center items-center text-center text-white relative z-10">
           <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-4 animate-fade-in">
-            vents <br className="hidden md:block" /> South India
+            Vibrant Events of<br className="hidden md:block" /> South India
           </h1>
           <p className="text-xl md:text-2xl mb-8 max-w-3xl opacity-90 animate-slide-up">
             Authentic experiences that connect you with traditions, festivals, and ceremonies from diverse cultures

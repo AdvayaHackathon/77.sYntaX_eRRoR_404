@@ -1,6 +1,5 @@
 
 import { EventCategory } from "./categories";
-import { supabase } from "@/lib/supabase";
 
 export interface Event {
   id: string;
@@ -33,40 +32,6 @@ export interface Event {
   trending?: boolean;
 }
 
-// Function to convert database row to Event interface
-const mapRowToEvent = (row: any): Event => {
-  return {
-    id: row.id,
-    title: row.title,
-    description: row.description,
-    longDescription: row.long_description,
-    image: row.image_url,
-    date: row.date,
-    endDate: row.end_date,
-    time: row.time,
-    location: {
-      name: row.location_name,
-      address: row.location_address,
-      city: row.location_city,
-      country: row.location_country,
-      coordinates: row.location_lat && row.location_lng 
-        ? { lat: row.location_lat, lng: row.location_lng }
-        : undefined,
-    },
-    price: {
-      currency: row.price_currency,
-      value: row.price_value,
-      formattedValue: row.price_formatted,
-      isFree: row.is_free,
-    },
-    category: row.category as EventCategory,
-    tags: row.tags,
-    featured: row.is_featured,
-    trending: row.is_trending,
-  };
-};
-
-// Fallback mock data for initial development
 const generateMockEvents = (): Event[] => {
   return [
     {
@@ -215,18 +180,18 @@ const generateMockEvents = (): Event[] => {
     },
     {
       id: "evt-006",
-      title: "Edinburgh Festival Fringe",
-      description: "Discover the world's largest arts festival with thousands of performances spanning theater, comedy, dance, and music.",
-      longDescription: "The Edinburgh Festival Fringe represents the world's largest celebration of arts and culture, taking over Scotland's capital each August with a mind-boggling array of performances. Founded in 1947 as an alternative to the Edinburgh International Festival, the Fringe embodies an open-access policy where anyone with a venue and a show can participate. This democratic approach has made it an unparalleled incubator for creative talent, where unknown performers can share stages (literal and figurative) with established stars. With over 3,000 shows across 300+ venues ranging from historic theaters to converted basements, public parks, and even moving buses, the Fringe offers something for every taste. Visitors can experience cutting-edge theater, stand-up comedy, physical performance, music, children's shows, exhibitions, and countless performances that defy categorization. The festival transforms Edinburgh into a buzzing, 24-hour city where artistic innovation and cultural exchange happen on every corner, creating a unique atmosphere that draws art lovers from across the globe.",
-      image: "https://images.unsplash.com/photo-1519834089823-11ca5f3fe31d",
+      title: "Basavanagudi Kadalekai Parishe",
+      description: "The Bengaluru Karaga is a vibrant 9-day festival rooted in centuries-old traditions of the Thigala community—a Tamil-speaking group of gardeners. This spectacular celebration unfolds at the Sri Dharmaraya Swamy Temple in Nagarathpete, Bengaluru.",
+      longDescription: "Bengaluru Karaga Overview The Bengaluru Karaga is a vibrant 9-day festival rooted in centuries-old traditions of the Thigala community—a Tamil-speaking group of gardeners. This spectacular celebration unfolds at the Sri Dharmaraya Swamy Temple in Nagarathpete, Bengaluru. Celebrated during March–April on the full moon day of Chaitra Masa (as per the Hindu calendar), the Karaga is known for its striking rituals and deep symbolic meanings.Key Highlights The Karaga Procession .The central event takes place after dusk on Karaga day.A male priest, dressed in female attire, carries a flower-adorned pyramid (Karaga) on his head.He leads a grand procession that features swordplay by bare-chested, dhoti-clad Thigalars.A significant stop during the procession is the tomb of an 18th-century Muslim saint, symbolizing Hindu-Muslim unity.Mythological Origins Rooted in the Mahabharata, the festival commemorates Draupadi's return as Adishakti.Legend says that Draupadi created Veera Kumaras (brave sons) to battle the demon Timirasura.The Veera Kumaras, unwilling to part from her, were promised her return each year on this special day.Cultural Significance Celebrates feminine divine power (Shakti).Showcases interfaith harmony.An unbroken tradition passed down for generations within the Thigala community.When Is It Celebrated?Falls on the full moon day (Purnima) of Chaitra Masa (usually March or April).For example, the 2020 edition began on 8th April 2020.Where Does It Begin?Sri Dharmaraya Swamy Temple, Nagarathpete, Bengaluru.Distance from:Kempegowda International Airport – 37 km Majestic (City Centre) – 5 km Where to Stay Nearby areas like KR Market and Gandhi Nagar offer a range of accommodation options within walking distance of the temple.Saturday, April 12, 2025",
+      image: "https://indianexpress.com/wp-content/uploads/2022/11/Kadalekai-Parishe-incopy1.jpeg",
       date: "2025-08-01",
       endDate: "2025-08-25",
       time: "Various",
       location: {
-        name: "Various Venues",
-        address: "City Center",
-        city: "Edinburgh",
-        country: "Scotland",
+        name: "Parishe",
+        address: "Karnataka",
+        city: "Karnataka",
+        country: "India",
         coordinates: {
           lat: 55.9533,
           lng: -3.1883
@@ -273,18 +238,18 @@ const generateMockEvents = (): Event[] => {
     },
     {
       id: "evt-008",
-      title: "Oktoberfest",
-      description: "Join the world's largest beer festival featuring traditional Bavarian food, music, and over six million visitors.",
-      longDescription: "Oktoberfest represents much more than the world's largest beer festival; it's a 16-day celebration of Bavarian culture that has maintained its authentic traditions since 1810. Originally held to celebrate a royal wedding, today's Oktoberfest welcomes over six million visitors to Munich's festival grounds (Theresienwiese). The event begins with a colorful parade of breweries and the ceremonial tapping of the first keg by Munich's mayor. Inside the massive festival tents, each operated by a different historic brewery, visitors experience traditional Bavarian hospitality while enjoying specially brewed Oktoberfest beer served in one-liter steins by staff in dirndls and lederhosen. Live bands play traditional oompah music alongside folk dances, while guests enjoy hearty Bavarian specialties like pretzels, roast chicken, and schweinshaxe (pork knuckle). Beyond the main festival grounds, visitors can explore special exhibitions on brewing history, traditional costume displays, and family-friendly attractions including carnival rides. Oktoberfest offers cultural tourists a joyful immersion into Bavarian traditions that have been carefully preserved while welcoming the world to participate.",
-      image: "https://images.unsplash.com/photo-1605493725784-56d225ea39d9",
+      title: "Bengaluru Karaga",
+      description: "The Bengaluru Karaga is a vibrant 9-day festival rooted in centuries-old traditions of the Thigala community—a Tamil-speaking group of gardeners. This spectacular celebration unfolds at the Sri Dharmaraya Swamy Temple in Nagarathpete, Bengaluru.",
+      longDescription: "Bengaluru Karaga is a vibrant 9-day festival rooted in centuries-old traditions of the Thigala community—a Tamil-speaking group of gardeners—celebrated at the Sri Dharmaraya Swamy Temple in Nagarathpete, Bengaluru, during March–April on the full moon day of Chaitra Masa (as per the Hindu calendar), known for its striking rituals and deep symbolic meanings; the central event is the Karaga procession held after dusk where a male priest, dressed in female attire, carries a flower-adorned pyramid (Karaga) on his head and leads a grand procession with swordplay by bare-chested, dhoti-clad Thigalars, making a significant stop at the tomb of an 18th-century Muslim saint, symbolizing Hindu-Muslim unity; mythologically rooted in the Mahabharata, the festival commemorates Draupadi’s return as Adishakti, where she created Veera Kumaras to battle the demon Timirasura and promised them her return every year; it celebrates feminine divine power (Shakti), showcases interfaith harmony, and represents an unbroken tradition within the Thigala community; it is celebrated on the full moon day (Purnima) of Chaitra Masa (usually March or April)—for instance, the 2020 edition began on 8th April 2020—and begins at Sri Dharmaraya Swamy Temple, Nagarathpete, Bengaluru, which is 37 km from Kempegowda International Airport and 5 km from Majestic (City Centre), with nearby areas like KR Market and Gandhi Nagar offering various accommodation options within walking distance of the temple; in 2025, it is celebrated on Saturday, April 12.",
+      image: "https://darter.in/wp-content/uploads/2013/11/karaga-bangalore-k2.jpg",
       date: "2025-09-20",
       endDate: "2025-10-05",
       time: "10:00",
       location: {
-        name: "Theresienwiese",
-        address: "Theresienwiese",
-        city: "Munich",
-        country: "Germany",
+        name: "Bengaluru Karaga",
+        address: "Bengaluru",
+        city: "Karnataka",
+        country: "India",
         coordinates: {
           lat: 48.1351,
           lng: 11.5494
@@ -305,131 +270,29 @@ const generateMockEvents = (): Event[] => {
 
 export const mockEvents = generateMockEvents();
 
-export const getFeaturedEvents = async (): Promise<Event[]> => {
-  try {
-    const { data, error } = await supabase
-      .from('events')
-      .select('*')
-      .eq('is_featured', true);
-    
-    if (error) {
-      console.error('Error fetching featured events:', error);
-      return mockEvents.filter(event => event.featured);
-    }
-    
-    return data.map(mapRowToEvent);
-  } catch (error) {
-    console.error('Error fetching featured events:', error);
-    return mockEvents.filter(event => event.featured);
-  }
+export const getFeaturedEvents = (): Event[] => {
+  return mockEvents.filter(event => event.featured);
 };
 
-export const getTrendingEvents = async (): Promise<Event[]> => {
-  try {
-    const { data, error } = await supabase
-      .from('events')
-      .select('*')
-      .eq('is_trending', true);
-    
-    if (error) {
-      console.error('Error fetching trending events:', error);
-      return mockEvents.filter(event => event.trending);
-    }
-    
-    return data.map(mapRowToEvent);
-  } catch (error) {
-    console.error('Error fetching trending events:', error);
-    return mockEvents.filter(event => event.trending);
-  }
+export const getTrendingEvents = (): Event[] => {
+  return mockEvents.filter(event => event.trending);
 };
 
-export const getEventById = async (id: string): Promise<Event | undefined> => {
-  try {
-    const { data, error } = await supabase
-      .from('events')
-      .select('*')
-      .eq('id', id)
-      .single();
-    
-    if (error) {
-      console.error('Error fetching event by ID:', error);
-      return mockEvents.find(event => event.id === id);
-    }
-    
-    return mapRowToEvent(data);
-  } catch (error) {
-    console.error('Error fetching event by ID:', error);
-    return mockEvents.find(event => event.id === id);
-  }
+export const getEventById = (id: string): Event | undefined => {
+  return mockEvents.find(event => event.id === id);
 };
 
-export const getEventsByCategory = async (category: EventCategory): Promise<Event[]> => {
-  try {
-    const { data, error } = await supabase
-      .from('events')
-      .select('*')
-      .eq('category', category);
-    
-    if (error) {
-      console.error('Error fetching events by category:', error);
-      return mockEvents.filter(event => event.category === category);
-    }
-    
-    return data.map(mapRowToEvent);
-  } catch (error) {
-    console.error('Error fetching events by category:', error);
-    return mockEvents.filter(event => event.category === category);
-  }
+export const getEventsByCategory = (category: EventCategory): Event[] => {
+  return mockEvents.filter(event => event.category === category);
 };
 
-export const searchEvents = async (query: string): Promise<Event[]> => {
-  try {
-    const searchTerm = query.toLowerCase();
-    const { data, error } = await supabase
-      .from('events')
-      .select('*')
-      .or(`title.ilike.%${searchTerm}%,description.ilike.%${searchTerm}%,location_city.ilike.%${searchTerm}%,location_country.ilike.%${searchTerm}%`);
-    
-    if (error) {
-      console.error('Error searching events:', error);
-      return mockEvents.filter(event => 
-        event.title.toLowerCase().includes(searchTerm) ||
-        event.description.toLowerCase().includes(searchTerm) ||
-        event.location.city.toLowerCase().includes(searchTerm) ||
-        event.location.country.toLowerCase().includes(searchTerm) ||
-        event.tags.some(tag => tag.toLowerCase().includes(searchTerm))
-      );
-    }
-    
-    return data.map(mapRowToEvent);
-  } catch (error) {
-    console.error('Error searching events:', error);
-    // Fall back to client-side search on the mock data
-    const searchTerm = query.toLowerCase();
-    return mockEvents.filter(event => 
-      event.title.toLowerCase().includes(searchTerm) ||
-      event.description.toLowerCase().includes(searchTerm) ||
-      event.location.city.toLowerCase().includes(searchTerm) ||
-      event.location.country.toLowerCase().includes(searchTerm) ||
-      event.tags.some(tag => tag.toLowerCase().includes(searchTerm))
-    );
-  }
-};
-
-export const getAllEvents = async (): Promise<Event[]> => {
-  try {
-    const { data, error } = await supabase
-      .from('events')
-      .select('*');
-    
-    if (error) {
-      console.error('Error fetching all events:', error);
-      return mockEvents;
-    }
-    
-    return data.map(mapRowToEvent);
-  } catch (error) {
-    console.error('Error fetching all events:', error);
-    return mockEvents;
-  }
+export const searchEvents = (query: string): Event[] => {
+  const searchTerm = query.toLowerCase();
+  return mockEvents.filter(event => 
+    event.title.toLowerCase().includes(searchTerm) ||
+    event.description.toLowerCase().includes(searchTerm) ||
+    event.location.city.toLowerCase().includes(searchTerm) ||
+    event.location.country.toLowerCase().includes(searchTerm) ||
+    event.tags.some(tag => tag.toLowerCase().includes(searchTerm))
+  );
 };

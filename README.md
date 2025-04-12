@@ -1,45 +1,73 @@
-# Welcome sYntaX eRRoR 404 👋
+# Welcome to your Lovable project
 
-Hello Team **sYntaX eRRoR 404** from **BGSCET**,
+## Project info
 
-Welcome to the Hackathon! We're excited to have you on board and can't wait to see what you'll build under the theme **"Boosting Culture and Tourism Through Tech"** 
+**URL**: https://lovable.dev/projects/c7f4647f-12b7-430c-9e68-454368fb7589
 
-## Team Details
+## How can I edit this code?
 
-- **Team Number:** 77  
-- **Team Name:** sYntaX eRRoR 404
-- **Team Leader:** Rishank Raj R  
-- **Email:** rajrishank0@gmail.com  
-- **Phone:** 9148892710  
+There are several ways of editing your application.
 
-### Team Members:
-- Yashas Gowda N 
-- Parthiv Bhat V S 
-- Preetham H M 
+**Use Lovable**
 
-## Problem Statement
+Simply visit the [Lovable Project](https://lovable.dev/projects/c7f4647f-12b7-430c-9e68-454368fb7589) and start prompting.
 
-> **How can we create a website that helps tourists discover cultural events (festivals, art exhibitions...**
+Changes made via Lovable will be committed automatically to this repo.
 
----
+**Use your preferred IDE**
 
-### Let's Get Started 
+If you want to work locally using your own IDE, you can clone this repo and push changes. Pushed changes will also be reflected in Lovable.
 
-This repository has been set up for your hackathon project. Use it to manage your code, collaborate, and share your progress.
+The only requirement is having Node.js & npm installed - [install with nvm](https://github.com/nvm-sh/nvm#installing-and-updating)
 
-**Important Guidelines - Please Read Carefully**
+Follow these steps:
 
-- Do **not** make any commits **before the allotted start date and time**. Early commits may result in getting caught.
-- Commit your work **regularly** to showcase your progress throughout the hackathon.
+```sh
+# Step 1: Clone the repository using the project's Git URL.
+git clone <YOUR_GIT_URL>
 
-- Maintain **professionalism and integrity** at all times. Any form of plagiarism or rule-breaking will lead to strict action.
+# Step 2: Navigate to the project directory.
+cd <YOUR_PROJECT_NAME>
 
-Let's keep it fair, fun, and impactful! 
----
+# Step 3: Install the necessary dependencies.
+npm i
 
-**Good luck, Team sYntaX eRRoR 404! Happy coding!**
+# Step 4: Start the development server with auto-reloading and an instant preview.
+npm run dev
+```
 
-If you need any support during the hackathon, don't hesitate to reach out to the co-ordinators.
+**Edit a file directly in GitHub**
 
-Cheers,  
-_Advaya Hackathon Team_
+- Navigate to the desired file(s).
+- Click the "Edit" button (pencil icon) at the top right of the file view.
+- Make your changes and commit the changes.
+
+**Use GitHub Codespaces**
+
+- Navigate to the main page of your repository.
+- Click on the "Code" button (green button) near the top right.
+- Select the "Codespaces" tab.
+- Click on "New codespace" to launch a new Codespace environment.
+- Edit files directly within the Codespace and commit and push your changes once you're done.
+
+## What technologies are used for this project?
+
+This project is built with:
+
+- Vite
+- TypeScript
+- React
+- shadcn-ui
+- Tailwind CSS
+
+## How can I deploy this project?
+
+Simply open [Lovable](https://lovable.dev/projects/c7f4647f-12b7-430c-9e68-454368fb7589) and click on Share -> Publish.
+
+## Can I connect a custom domain to my Lovable project?
+
+Yes it is!
+
+To connect a domain, navigate to Project > Settings > Domains and click Connect Domain.
+
+Read more here: [Setting up a custom domain](https://docs.lovable.dev/tips-tricks/custom-domain#step-by-step-guide)
